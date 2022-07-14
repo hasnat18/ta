@@ -5,7 +5,9 @@
           <!-- overlayScrollbars -->
           <link rel="stylesheet" href="{{url('public/assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
           <!-- Theme style -->
-          <link rel="stylesheet" href="{{url('public/assets/dist/css/adminlte.min.css')}}">
+          <link rel="stylesheet" href="{{url('public/assets/dist/css/adminlte.css')}}">
+          <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="http://localhost/tution_academy-main/assets/images/favicon.png">
       </head>
 
 
@@ -178,7 +180,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -193,19 +195,16 @@
                   <p>Dashboard v1</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="../../index2.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v2</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../../index3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v3</p>
-                </a>
-              </li>
             </ul>
+          </li> --}}
+          <li class="nav-item">
+            <a href="category" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Category
+                {{-- <i class="right fas fa-angle-left"></i> --}}
+              </p>
+            </a>
           </li>
           
         </ul>
@@ -214,7 +213,11 @@
     </div>
     <!-- /.sidebar -->
   </aside>
+ <div class="content-wrapper mt-5">
 
+   @yield('main')
+
+ </div>
       <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
           <b>Version</b> 3.2.0

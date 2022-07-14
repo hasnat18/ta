@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +25,18 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/sidebar', function () {
     return view('layouts.sidebar');
 });
+
+
+
+// Route::get('/add-category', function () {
+//     return view('category.create');
+// });
+
+
+// });
+
+Route::resource('/category', CategoryController::class);
+
+
 
 
