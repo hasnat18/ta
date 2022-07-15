@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LevelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,15 +28,9 @@ Route::get('/sidebar', function () {
 });
 
 
-
-// Route::get('/add-category', function () {
-//     return view('category.create');
-// });
-
-
-// });
-
 Route::resource('/category', CategoryController::class);
+
+Route::resource('/levels', LevelController::class);
 
 
 

@@ -1,18 +1,20 @@
 @extends('layouts.sidebar')
 
 @section('main')
+{{-- @dd($category) --}}
                 <!-- /.row -->
-                <section class="content position-relative">
+                <section class="content">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-12">
                               <div class="card">
                                 <div class="card-header">
-                                  <h3 class="card-title">All Category</h3>
+                                  <h3 class="card-title">All Level</h3>
                   
                                   <div class="card-tools">
                                     <div class="input-group input-group-sm" style="width: 150px;">
-                                        <a href="{{route('category.create')}}" class="btn btn-sm rounded btn-secondary">Add New</a>
+                                        <a href="{{route('levels.create')}}" class="btn btn-sm rounded btn-secondary">Add New</a>
+                  
                                       {{-- <div class="input-group-append">
                                         <button type="submit" class="btn btn-default">
                                           <i class="fas fa-search"></i>
@@ -26,27 +28,29 @@
                                   <table class="table table-hover text-nowrap">
                                     <thead>
                                       <tr>
-                                        <th>ID</th>
+                                        <th>no</th>
                                         <th>Category</th>
+                                        <th>Level</th>
                                         <th>Action</th>
                                       </tr>
                                     </thead>
                                     <tbody>
-                                      @foreach ($category as $data)
+                                      {{-- @foreach ($category as $data) --}}
                                         <tr>
-                                            <td>{{$data->id}}</td>
-                                            <td>{{$data->name}}</td>
+                                            <td>1</td>
+                                            <td>English</td>
+                                            <td>Mid</td>
                                             <td>
-                                              <form action="{{ route('category.destroy', $data->id) }}" method="POST">
-                                                <a href="{{route('category.destroy',$data->id)}} " style="color:white;" >Delete</a>
+                                              <form action="" method="POST">
+                                                <a href="" style="color:white;" >Delete</a>
                                                 @csrf
                                                 @method('DELETE')
-                                                <a href="{{route('category.edit',$data->id)}}" class="btn btn-sm rounded btn-secondary">Edit</a>
+                                                <a href="" class="btn btn-sm rounded btn-secondary">Edit</a>
                                                 <button class="btn btn-sm rounded btn-danger">Delete</button>
                                             </form>
                                             </td>
                                           </tr>
-                                        @endforeach
+                                        {{-- @endforeach --}}
                                     </tbody>
                                   </table>
                                 </div>

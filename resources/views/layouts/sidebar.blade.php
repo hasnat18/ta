@@ -200,10 +200,13 @@
           <li class="nav-item">
             <a href="category" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Category
-                {{-- <i class="right fas fa-angle-left"></i> --}}
-              </p>
+              <p>Category{{-- <i class="right fas fa-angle-left"></i> --}}</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="levels" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>Levels{{-- <i class="right fas fa-angle-left"></i> --}}</p>
             </a>
           </li>
           
@@ -213,7 +216,7 @@
     </div>
     <!-- /.sidebar -->
   </aside>
- <div class="content-wrapper mt-5">
+ <div class="content-wrapper mt-5 mb-0">
 
    @yield('main')
 
@@ -222,7 +225,7 @@
         <div class="float-right d-none d-sm-block">
           <b>Version</b> 3.2.0
         </div>
-        <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2014-2021.</strong> All rights reserved.
       </footer>
 
 <script src="{{ url ('public/assets/plugins/jquery/jquery.min.js')}}"></script>

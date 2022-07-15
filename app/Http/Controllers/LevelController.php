@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use DB;
 
-class CategoryController extends Controller
+class LevelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::all();
-        // dd($category);
-        return view('category.index',compact('category'));
+        return view('levels.index');
     }
 
     /**
@@ -27,7 +25,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('category.create');
+        $category = Category::all();
+        // dd($category);
+        return view('levels.create',compact('category'));
     }
 
     /**
@@ -39,19 +39,21 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-        $this->validate($request, [
-            'name' => 'required',
-        ]);
-
-        $category = new Category;
-
-        $category->name = $request->input('name');
-
-        $category->save();
-
-        return redirect()->route('category.index');
-        // return view('category.edit');
-
+                // dd($request);
+                $this->validate($request, [
+                    'category_id' => 'required',
+                    'level' => 'required',
+                ]);
+        
+                $level = new level;
+        
+                $level->category_id = $request->input('category_id');
+                $level->level = $request->input('name');
+        
+                $level->save();
+        
+                return redirect()->route('levels.index');
+                // return view('category.edit');
     }
 
     /**
@@ -62,9 +64,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        // $category = Category::find($id);
-        // // dd($category);
-        // return view('category.edit',compact('category'));
+
     }
 
     /**
@@ -75,9 +75,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::find($id);
-        // dd($category);
-        return view('category.edit',compact('category'));
+        //
     }
 
     /**
@@ -89,20 +87,8 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request);
-        $this->validate($request, [
-            'name' => 'required',
-        ]);
-
-        $category = Category::find($id);
-
-        $category->name = $request->input('name');
-
-        $category->save();
-
-        return redirect()->route('category.index');
-        // return view('category.index');
-}
+        //
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -112,8 +98,6 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        // dd($id);
-        DB::table('categories')->where('id',$id)->delete();
-        return redirect()->route('category.index');
+        //
     }
 }
