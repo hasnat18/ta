@@ -11,4 +11,9 @@ class Category extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function levels()
+    {
+        return $this->HasMany(level::class);
+    }
 }

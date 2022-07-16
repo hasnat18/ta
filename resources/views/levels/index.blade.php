@@ -1,7 +1,7 @@
 @extends('layouts.sidebar')
 
 @section('main')
-{{-- @dd($category) --}}
+{{-- @dd($level) --}}
                 <!-- /.row -->
                 <section class="content">
                     <div class="container-fluid">
@@ -35,22 +35,22 @@
                                       </tr>
                                     </thead>
                                     <tbody>
-                                      {{-- @foreach ($category as $data) --}}
+                                      @foreach($level as $d)
                                         <tr>
-                                            <td>1</td>
-                                            <td>English</td>
-                                            <td>Mid</td>
+                                            <td>{{$d->id}}</td>
+                                            <td>{{$d->category->name}}</td>
+                                            <td>{{$d->level}}</td>
                                             <td>
-                                              <form action="" method="POST">
-                                                <a href="" style="color:white;" >Delete</a>
+                                              <form action="{{route('levels.destroy',$d->id)}}" method="POST">
+                                                {{-- <a href="" style="color:white;" >Delete</a> --}}
                                                 @csrf
                                                 @method('DELETE')
-                                                <a href="" class="btn btn-sm rounded btn-secondary">Edit</a>
+                                                <a href="{{route('levels.edit',$d->id)}}" class="btn btn-sm rounded btn-secondary">Edit</a>
                                                 <button class="btn btn-sm rounded btn-danger">Delete</button>
                                             </form>
                                             </td>
                                           </tr>
-                                        {{-- @endforeach --}}
+                                        @endforeach
                                     </tbody>
                                   </table>
                                 </div>

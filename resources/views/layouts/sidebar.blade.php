@@ -60,7 +60,7 @@
               <a href="#" class="dropdown-item">
                 <!-- Message Start -->
                 <div class="media">
-                  <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                  <img src="../../dist/img/user1-128x128.jpg"  alt="User Avatar" class="img-size-50 mr-3 img-circle">
                   <div class="media-body">
                     <h3 class="dropdown-item-title">
                       Brad Diesel
@@ -158,7 +158,10 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{url('public/assets/img/logo.png')}}" class="img-circle elevation-2" alt="User Image">
+          <a href="{{route('category.index')}}">
+            <img src="{{url('\public/assets/img/logo.png')}}" class="img-circle elevation-2" alt="User Image">
+          </a>
+          
           {{-- <span class="h1 fw-bold mb-0"><img src="{{url('public/assets/img/logo.png')}}"alt="login form" class="img-fluid"  style="border-radius: 1rem 0 0 1rem;" /></span> --}}
         </div>
       </div>
@@ -198,13 +201,13 @@
             </ul>
           </li> --}}
           <li class="nav-item">
-            <a href="category" class="nav-link">
+            <a href="{{route('category.index')}}" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>Category{{-- <i class="right fas fa-angle-left"></i> --}}</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="levels" class="nav-link">
+            <a href="{{route('levels.index')}}" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>Levels{{-- <i class="right fas fa-angle-left"></i> --}}</p>
             </a>

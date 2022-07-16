@@ -22,8 +22,8 @@
                 <div class="form-group">
                   <label for="exampleInputEmail1">Category</label>
                   <select name="category_id" class="form-control" >
-                    @foreach($category as $d)
-                    <option  value="{{$d->id}}">{{$d->name}}</option>
+                    @foreach($categories as $id => $category)
+                    <option  value="{{$id}}">{{$category}}</option>
                     {{-- <option {{ ($profiledata->nationality) == 'India' ? 'selected' : '' }}  value="India">India</option> --}}
                     @endforeach
                   </select>

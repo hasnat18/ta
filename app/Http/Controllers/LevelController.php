@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\level;
 use DB;
 
 class LevelController extends Controller
@@ -15,7 +16,8 @@ class LevelController extends Controller
      */
     public function index()
     {
-        return view('levels.index');
+        $level = level::all();
+        return view('levels.index',compact('level'));
     }
 
     /**
@@ -25,9 +27,9 @@ class LevelController extends Controller
      */
     public function create()
     {
-        $category = Category::all();
+        $categories = Category::pluck('name','id');
         // dd($category);
-        return view('levels.create',compact('category'));
+        return view('levels.create',compact('categories'));
     }
 
     /**
@@ -39,20 +41,21 @@ class LevelController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-                // dd($request);
-                $this->validate($request, [
-                    'category_id' => 'required',
-                    'level' => 'required',
-                ]);
+
         
-                $level = new level;
+        $validated = $request->validate([
+            'category_id' => 'required',
+            'name' => 'required',
+        ]);
         
-                $level->category_id = $request->input('category_id');
-                $level->level = $request->input('name');
+        $level = new level;
         
-                $level->save();
+        $level->category_id = $request->input('category_id');
+        $level->level = $request->input('name');
+        $level->save();
+        // dd($level);
         
-                return redirect()->route('levels.index');
+        return redirect()->route('levels.index');
                 // return view('category.edit');
     }
 
@@ -75,7 +78,9 @@ class LevelController extends Controller
      */
     public function edit($id)
     {
-        //
+        $levels = level::find($id);
+        $categories = Category::pluck('name','id');
+        return view('levels.edit',compact('levels','categories'));
     }
 
     /**
@@ -87,7 +92,21 @@ class LevelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'category_id' => 'required',
+            'name' => 'required',
+        ]);
+        
+        $level =  level::find($id);
+        
+        $level->category_id = $request->input('category_id');
+        $level->level = $request->input('name');
+        $level->save();
+        // dd($request);
+
+        return redirect()->route('levels.index');
+
+
     }
 
     /**
@@ -98,6 +117,7 @@ class LevelController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('levels')->where('id',$id)->delete();
+        return redirect()->route('levels.index');
     }
 }

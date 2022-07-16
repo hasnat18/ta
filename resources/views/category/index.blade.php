@@ -38,7 +38,7 @@
                                             <td>{{$data->name}}</td>
                                             <td>
                                               <form action="{{ route('category.destroy', $data->id) }}" method="POST">
-                                                <a href="{{route('category.destroy',$data->id)}} " style="color:white;" >Delete</a>
+                                                {{-- <a href="{{route('category.destroy',$data->id)}} " style="color:white;" >Delete</a> --}}
                                                 @csrf
                                                 @method('DELETE')
                                                 <a href="{{route('category.edit',$data->id)}}" class="btn btn-sm rounded btn-secondary">Edit</a>

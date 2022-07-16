@@ -12,4 +12,9 @@ class level extends Model
         'category_id',
         'level',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
