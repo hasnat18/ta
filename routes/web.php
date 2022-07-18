@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\cityController;
+use App\Http\Controllers\classifiedController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +34,11 @@ Route::get('/sidebar', function () {
 Route::resource('/category', CategoryController::class);
 
 Route::resource('/levels', LevelController::class);
+
+Route::resource('/cities', cityController::class);
+
+Route::resource('/classifieds', classifiedController::class);
+
 
 
 

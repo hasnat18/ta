@@ -7,7 +7,7 @@
           <!-- Theme style -->
           <link rel="stylesheet" href="{{url('public/assets/dist/css/adminlte.css')}}">
           <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="http://localhost/tution_academy-main/assets/images/favicon.png">
+          <link rel="shortcut icon" type="image/x-icon" href="http://localhost/tution_academy-main/assets/images/favicon.png">
       </head>
 
 
@@ -179,7 +179,7 @@
       </div>
 
       <!-- Sidebar Menu -->
-      <nav class="mt-2">
+      <nav class="mt-2 position-auto">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
@@ -200,18 +200,10 @@
               </li>
             </ul>
           </li> --}}
-          <li class="nav-item">
-            <a href="{{route('category.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>Category{{-- <i class="right fas fa-angle-left"></i> --}}</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{route('levels.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>Levels{{-- <i class="right fas fa-angle-left"></i> --}}</p>
-            </a>
-          </li>
+          <li class="nav-item"><a href="{{route('category.index')}}" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Categories{{-- <i class="right fas fa-angle-left"></i> --}}</p></a></li>
+          <li class="nav-item"><a href="{{route('levels.index')}}" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Levels{{-- <i class="right fas fa-angle-left"></i> --}}</p></a></li>
+          <li class="nav-item"><a href="{{route('cities.index')}}" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Cities{{-- <i class="right fas fa-angle-left"></i> --}}</p></a></li>
+          <li class="nav-item"><a href="{{route('classifieds.index')}}" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Classifieds{{-- <i class="right fas fa-angle-left"></i> --}}</p></a></li>
           
         </ul>
       </nav>
@@ -219,17 +211,22 @@
     </div>
     <!-- /.sidebar -->
   </aside>
- <div class="content-wrapper mt-5 mb-0">
 
-   @yield('main')
+  <main class="container content-wrapper mt-5 mb-0 ">
+    <div >
 
- </div>
-      <footer class="main-footer">
-        <div class="float-right d-none d-sm-block">
+      @yield('main')
+   
+    </div>
+  </main >
+
+      <footer class="main-footer ">
+        <div class="float-right d-none d-sm-block ">
           <b>Version</b> 3.2.0
         </div>
         <strong>Copyright &copy; 2014-2021.</strong> All rights reserved.
       </footer>
+
 
 <script src="{{ url ('public/assets/plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap 4 -->
