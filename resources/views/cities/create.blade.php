@@ -21,7 +21,7 @@
               <div class="card-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">City</label>
-                  <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="City Name">
+                  <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="City Name" required>
                 </div>
               </div>
               <!-- /.card-body -->

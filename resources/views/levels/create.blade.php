@@ -8,6 +8,19 @@
       <div class="row">
         <!-- left column -->
         <div class="col-md-12">
+          @if ($message = Session::get('success'))
+          <div class="alert alert-success">
+              <p>{{ $message }}</p>
+          </div>
+          @endif
+          @if (Session::get('error'))
+              <div class="alert alert-danger">
+                  <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                  <ul>
+                      <p>{{ Session::get('error') }}</p>
+                  </ul>
+              </div>
+          @endif
           <!-- jquery validation -->
           <div class="card card-secondary">
             <div class="card-header">

@@ -38,19 +38,23 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        $this->validate($request, [
-            'name' => 'required',
-        ]);
 
-        $category = new Category;
-
-        $category->name = $request->input('name');
-
-        $category->save();
-
-        return redirect()->route('category.index');
-        // return view('category.edit');
+        try {
+            $this->validate($request, [
+                'name' => 'required',
+            ]);
+            $category = new Category;
+            $category->name = $request->input('name');
+            $category->save();
+            {
+                return redirect()->route('category.index')
+                ->with('success','Category Created Successfully');
+            }
+        }
+        catch (\Exception $exception){
+            return redirect()->back()
+                ->with('error',$exception->getMessage());
+        }
 
     }
 
@@ -89,20 +93,23 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request);
-        $this->validate($request, [
-            'name' => 'required',
-        ]);
-
-        $category = Category::find($id);
-
-        $category->name = $request->input('name');
-
-        $category->save();
-
-        return redirect()->route('category.index');
-        // return view('category.index');
-}
+        try {
+            $this->validate($request, [
+                'name' => 'required',
+            ]);
+            $category = Category::find($id);
+            $category->name = $request->input('name');
+            $category->save();
+            {
+                return redirect()->route('category.index')
+                ->with('success','Category Updated Successfully');
+            }
+        }
+        catch (\Exception $exception){
+            return redirect()->back()
+                ->with('error',$exception->getMessage());
+        }
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -112,8 +119,17 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        // dd($id);
-        DB::table('categories')->where('id',$id)->delete();
-        return redirect()->route('category.index');
+        try {
+            DB::table('categories')->where('id',$id)->delete();
+            {
+                return redirect()->route('category.index')
+                ->with('success','Row Deleted Successfully');
+            }
+        }
+        catch (\Exception $exception){
+            return redirect()->back()
+                ->with('error',$exception->getMessage());
+        }
     }
+    
 }

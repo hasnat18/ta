@@ -40,23 +40,26 @@ class LevelController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-
+        try {
+            $validated = $request->validate([
+                'category_id' => 'required',
+                'name' => 'required',
+            ]);
+            $level = new level;
         
-        $validated = $request->validate([
-            'category_id' => 'required',
-            'name' => 'required',
-        ]);
-        
-        $level = new level;
-        
-        $level->category_id = $request->input('category_id');
-        $level->level = $request->input('name');
-        $level->save();
-        // dd($level);
-        
-        return redirect()->route('levels.index');
-                // return view('category.edit');
+            $level->category_id = $request->input('category_id');
+            $level->level = $request->input('name');
+            $level->save();
+            // dd($request);
+            {
+                return redirect()->route('levels.index')
+                ->with('success','City Created successfully');
+            }
+        }
+        catch (\Exception $exception){
+            return redirect()->back()
+                ->with('error',$exception->getMessage());
+        }
     }
 
     /**
@@ -92,21 +95,26 @@ class LevelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validated = $request->validate([
-            'category_id' => 'required',
-            'name' => 'required',
-        ]);
+        try {
+            $validated = $request->validate([
+                'category_id' => 'required',
+                'name' => 'required',
+            ]);
+            $level =  level::find($id);
         
-        $level =  level::find($id);
-        
-        $level->category_id = $request->input('category_id');
-        $level->level = $request->input('name');
-        $level->save();
-        // dd($request);
-
-        return redirect()->route('levels.index');
-
-
+            $level->category_id = $request->input('category_id');
+            $level->level = $request->input('name');
+            $level->save();
+            // dd($request);
+            {
+                return redirect()->route('levels.index')
+                ->with('success','Level Updated successfully');
+            }
+        }
+        catch (\Exception $exception){
+            return redirect()->back()
+                ->with('error',$exception->getMessage());
+        }
     }
 
     /**
@@ -117,7 +125,17 @@ class LevelController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('levels')->where('id',$id)->delete();
-        return redirect()->route('levels.index');
+
+        try {
+            DB::table('levels')->where('id',$id)->delete();
+            {
+                return redirect()->route('levels.index')
+                ->with('success','Row deleted successfully');
+            }
+        }
+        catch (\Exception $exception){
+            return redirect()->back()
+                ->with('error',$exception->getMessage());
+        }
     }
 }

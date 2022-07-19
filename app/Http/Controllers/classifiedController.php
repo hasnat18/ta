@@ -39,31 +39,49 @@ class classifiedController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        $c = new Classified;
-        $c->title = $request->title;
-        $c->contact = $request->contact;
-        $c->bname = $request->bname;
-        $c->cnic = $request->cnic;
-        $c->web = $request->web;
-        $c->category = $request->category;
-        $c->description = $request->description;
-        $c->start_date = $request->start_date;
-        $c->end_date = $request->end_date;
-        $c->status = 'ACTIVE';
 
-        if($request->image != null)
-        {
-            $imageName = time().'.'.$request->image->extension();  
-            $request->image->move(public_path('upload_image'), $imageName);
-            $c->image = $imageName;
+        try {
+            $this->validate($request, [
+                'title' => 'required',
+                'contact' => 'required',
+                'bname' => 'nullable',
+                'cnic' => 'required',
+                'web' => 'nullable',
+                'category' => 'required',
+                'description' => 'nullable',
+                'start_date' => 'nullable',
+                'end_date' => 'nullable',
+                'status' => 'nullable',
+            ]);
+            $c = new Classified;
+            $c->title = $request->title;
+            $c->contact = $request->contact;
+            $c->bname = $request->bname;
+            $c->cnic = $request->cnic;
+            $c->web = $request->web;
+            $c->category = $request->category;
+            $c->description = $request->description;
+            $c->start_date = $request->start_date;
+            $c->end_date = $request->end_date;
+            $c->status = 'ACTIVE';
+    
+            if($request->image != null)
+            {
+                $imageName = time().'.'.$request->image->extension();  
+                $request->image->move(public_path('upload_image'), $imageName);
+                $c->image = $imageName;
+            }
+            if($c->save())
+            {
+                return redirect()->route('classifieds.index')
+                ->with('success','Classified Created successfully');
+            }
         }
-        if($c->save())
-        {
-            return redirect()->route('classifieds.index');
+        catch (\Exception $exception){
+            return redirect()->back()
+                ->with('error',$exception->getMessage());
         }
 
-        return view('classifieds.index');
     }
 
     /**
@@ -98,32 +116,49 @@ class classifiedController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request);
 
-                $c = Classified::find($id);
-                $c->title = $request->title;
-                $c->contact = $request->contact;
-                $c->bname = $request->bname;
-                $c->cnic = $request->cnic;
-                $c->web = $request->web;
-                $c->category = $request->category;
-                $c->description = $request->description;
-                $c->start_date = $request->start_date;
-                $c->end_date = $request->end_date;
-                $c->status = 'ACTIVE';
-        
-                if($request->image != null)
-                {
-                    $imageName = time().'.'.$request->image->extension();  
-                    $request->image->move(public_path('upload_image'), $imageName);
-                    $c->image = $imageName;
-                }
-                $c->save();
-                {
-                    return redirect()->route('classifieds.index');
-                }
-        
-                return view('classifieds.index');
+        try {
+            $this->validate($request, [
+                'title' => 'required',
+                'contact' => 'required',
+                'bname' => 'nullable',
+                'cnic' => 'required',
+                'web' => 'nullable',
+                'category' => 'required',
+                'description' => 'nullable',
+                'start_date' => 'nullable',
+                'end_date' => 'nullable',
+                'status' => 'nullable',
+            ]);
+            $c = Classified::find($id);
+            $c->title = $request->title;
+            $c->contact = $request->contact;
+            $c->bname = $request->bname;
+            $c->cnic = $request->cnic;
+            $c->web = $request->web;
+            $c->category = $request->category;
+            $c->description = $request->description;
+            $c->start_date = $request->start_date;
+            $c->end_date = $request->end_date;
+            $c->status = 'ACTIVE';
+    
+            if($request->image != null)
+            {
+                $imageName = time().'.'.$request->image->extension();  
+                $request->image->move(public_path('upload_image'), $imageName);
+                $c->image = $imageName;
+            }
+            if($c->save())
+            {
+                return redirect()->route('classifieds.index')
+                ->with('success','Classified Updated successfully');
+            }
+        }
+        catch (\Exception $exception){
+            return redirect()->back()
+                ->with('error',$exception->getMessage());
+        }
+
     }
 
     /**
@@ -134,7 +169,17 @@ class classifiedController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('classifieds')->where('id',$id)->delete();
-        return redirect()->route('classifieds.index');
+        try {
+            DB::table('classifieds')->where('id',$id)->delete();
+            {
+                return redirect()->route('classifieds.index')
+                ->with('success','Row Deleted Successfully');
+            }
+        }
+        catch (\Exception $exception){
+            return redirect()->back()
+                ->with('error',$exception->getMessage());
+        }
+
     }
 }

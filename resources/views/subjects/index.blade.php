@@ -1,12 +1,12 @@
 @extends('layouts.sidebar')
 
 @section('main')
-{{-- @dd($city) --}}
+{{-- @dd($level) --}}
                 <!-- /.row -->
                 <section class="content">
                     <div class="container-fluid">
                         <div class="row">
-                          <div class="col-12">
+                            <div class="col-12">
                               @if ($message = Session::get('success'))
                               <div class="alert alert-success">
                                   <p>{{ $message }}</p>
@@ -26,7 +26,7 @@
                   
                                   <div class="card-tools">
                                     <div class="input-group input-group-sm" style="width: 150px;">
-                                        <a href="{{route('cities.create')}}" class="btn btn-sm rounded btn-secondary">Add New</a>
+                                        <a href="{{route('subjects.create')}}" class="btn btn-sm rounded btn-secondary">Add New</a>
                   
                                       {{-- <div class="input-group-append">
                                         <button type="submit" class="btn btn-default">
@@ -41,27 +41,29 @@
                                   <table class="table table-hover text-nowrap">
                                     <thead>
                                       <tr>
-                                        <th>#</th>
-                                        <th>City</th>
+                                        <th>no</th>
+                                        <th>Category</th>
+                                        <th>Level</th>
                                         <th>Action</th>
                                       </tr>
                                     </thead>
                                     <tbody>
-                                      @foreach($city as $d)
+                                      {{-- @foreach($level as $d) --}}
                                         <tr>
-                                            <td>{{$d->id}}</td>
-                                            <td>{{$d->name}}</td>
+                                            <td>Level</td>
+                                            <td>Level</td>
+                                            <td>Subject</td>
                                             <td>
-                                              <form action="{{route('cities.destroy',$d->id)}}" method="POST">
+                                              <form action="" method="POST">
                                                 {{-- <a href="" style="color:white;" >Delete</a> --}}
                                                 @csrf
                                                 @method('DELETE')
-                                                <a href="{{route('cities.edit',$d->id)}}" class="btn btn-sm rounded btn-secondary">Edit</a>
+                                                <a href="" class="btn btn-sm rounded btn-secondary">Edit</a>
                                                 <button class="btn btn-sm rounded btn-danger">Delete</button>
                                             </form>
                                             </td>
                                           </tr>
-                                        @endforeach
+                                        {{-- @endforeach --}}
                                     </tbody>
                                   </table>
                                 </div>

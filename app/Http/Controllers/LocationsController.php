@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\City;
-use DB;
 
 use Illuminate\Http\Request;
+use App\Models\City;
+use App\Models\Location;
+use DB;
 
-class cityController extends Controller
+class LocationsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,8 @@ class cityController extends Controller
      */
     public function index()
     {
-        $city = City::all();
-        return view('cities.index',compact('city'));
+       $loc = Location::get()->all();
+        return view('locations.index',compact('loc'));
     }
 
     /**
@@ -26,7 +27,8 @@ class cityController extends Controller
      */
     public function create()
     {
-        return view('cities.create');
+        $city = city::get()->all();
+        return view('locations.create',compact('city'));
     }
 
     /**
@@ -40,18 +42,19 @@ class cityController extends Controller
 
 
         try {
-            $this->validate($request, [
-                'name' => 'required',
-                ]);
-                $city = new City;
-    
-                $city->name = $request->input('name');
-        
-                $city->save();
-            {
-                return redirect()->route('cities.index')
-                ->with('success','Classified Created successfully');
-            }
+            $this->validate($request,[
+                'city_id',
+                'location'
+               ]);
+
+               $loc = new Location;
+               $loc->city_id = $request->input('city_id');
+               $loc->location = $request->input('location');
+               $loc->save();
+            //    return view('locations.index');
+
+            return redirect()->back()
+                ->with('success','Location Created successfully');
         }
         catch (\Exception $exception){
             return redirect()->back()
@@ -79,9 +82,12 @@ class cityController extends Controller
      */
     public function edit($id)
     {
-        $city = City::find($id);
-        // dd($category);
-        return view('cities.edit',compact('city'));
+        $loc = Location::find($id);
+        $city = City::get()->all();
+        // dd($city);
+
+        // dd($loc);
+        return view('locations.edit',compact('loc','city'));
     }
 
     /**
@@ -93,22 +99,25 @@ class cityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        try {
-            $this->validate($request, [
-                'name' => 'required',
-                ]);
 
-                $city = City::find($id);
-                $city->name = $request->input('name');      
-                $city->save();
-            {
-                return redirect()->route('cities.index')
-                ->with('success','Classified Updated successfully');
-            }
+           try {
+            $this->validate($request,[
+                'city_id',
+                'location'
+               ]);
+
+               $loc = Location::find($id);
+               $loc->city_id = $request->input('city_id');
+               $loc->location = $request->input('location');
+               $loc->save();
+            //    return view('locations.index');
+
+            return redirect()->route('locations.index')
+                ->with('success','Location updated successfully');
         }
         catch (\Exception $exception){
             return redirect()->back()
-                ->with('error',$exception->getMessage());
+                ->with('error','Please Select the City');
         }
     }
 
@@ -120,10 +129,11 @@ class cityController extends Controller
      */
     public function destroy($id)
     {
+
         try {
-            DB::table('cities')->where('id',$id)->delete();
+            DB::table('locations')->where('id',$id)->delete();
             {
-                return redirect()->route('cities.index')
+                return redirect()->route('locations.index')
                 ->with('success','Row Deleted Successfully');
             }
         }
@@ -132,4 +142,5 @@ class cityController extends Controller
                 ->with('error',$exception->getMessage());
         }
     }
+
 }

@@ -10,6 +10,19 @@
         <div class="col-md-12">
           <!-- jquery validation -->
           <div class="card card-secondary">
+              @if ($message = Session::get('success'))
+                <div class="alert alert-success">
+                    <p>{{ $message }}</p>
+                </div>
+                @endif
+                @if (Session::get('error'))
+                    <div class="alert alert-danger">
+                        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                        <ul>
+                            <p>{{ Session::get('error') }}</p>
+                        </ul>
+                    </div>
+                @endif
             <div class="card-header">
               <h3 class="card-title">Add City</h3>
             </div>
@@ -22,7 +35,7 @@
               <div class="card-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">City</label>
-                  <input type="text" name="name" class="form-control" value="{{$city->name}}" id="exampleInputEmail1" placeholder="City Name">
+                  <input type="text" name="name" class="form-control" value="{{$city->name}}" id="exampleInputEmail1" placeholder="City Name" required>
                 </div>
               </div>
               <!-- /.card-body -->

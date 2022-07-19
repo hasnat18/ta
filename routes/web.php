@@ -5,6 +5,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\cityController;
 use App\Http\Controllers\classifiedController;
+use App\Http\Controllers\LocationsController;
+use App\Http\Controllers\SubjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +40,10 @@ Route::resource('/levels', LevelController::class);
 Route::resource('/cities', cityController::class);
 
 Route::resource('/classifieds', classifiedController::class);
+
+Route::resource('/locations', LocationsController::class);
+
+Route::resource('/subjects', SubjectController::class);
 
 
 

@@ -13,7 +13,21 @@
         <!-- left column -->
         <div class="col-md-12 position-relative">
           <!-- jquery validation -->
+          @if ($message = Session::get('success'))
+          <div class="alert alert-success">
+              <p>{{ $message }}</p>
+          </div>
+      @endif
+          @if (Session::get('error'))
+              <div class="alert alert-danger">
+                  <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                  <ul>
+                      <p>{{ Session::get('error') }}</p>
+                  </ul>
+              </div>
+          @endif
           <div class="card card-secondary">
+
             <div class="card-header">
               <h3 class="card-title">Add Category</h3>
             </div>
@@ -46,26 +60,24 @@
                       <div class="row">
                               <label class="col-sm-12">Upload an image</label>
                               <div class="col-sm-12 validate">
-                                  <input type="file" id="id_proof" name="image" class="form-control" accept="image/*" onchange="loadImage(event)">
+                                  <input type="file" id="id_proof" name="image" class="form-control" accept="image/*" onchange="loadImage(event)" required>
                               </div>
                       </div>
                   </div>
                   </div>
                 </div>
 
-
-
                 <div class="row">
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Title</label>
-                      <input type="email" name="title" class="form-control" id="exampleInputEmail1" placeholder="Title">
+                      <input type="email" name="title" class="form-control" id="exampleInputEmail1" placeholder="Title" required>
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label for="exampleInputPassword1">Business Name</label>
-                      <input type="text" name="bname" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                      <input type="text" name="bname" class="form-control" id="exampleInputPassword1" placeholder="Business name" required>
                     </div>
                   </div>
                 </div>
@@ -74,13 +86,13 @@
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Contact Number</label>
-                      <input type="tel" name="contact" class="form-control" id="exampleInputEmail1" placeholder="Contact Number">
+                      <input type="tel" name="contact" class="form-control" id="exampleInputEmail1" placeholder="Contact Number" required>
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label for="exampleInputPassword1">Cnic Number</label>
-                      <input type="Text" name="cnic" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                      <input type="Text" name="cnic" class="form-control" id="exampleInputPassword1" placeholder="Nic Number">
                     </div>
                   </div>
                 </div>
@@ -89,13 +101,14 @@
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Website Link</label>
-                      <input type="text" name="web" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                      <input type="text" name="web" class="form-control" id="exampleInputEmail1" placeholder="Website Link">
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label for="exampleSelectRounded0">Category</label>
-                      <select class="custom-select rounded-0" name="category" id="exampleSelectRounded0">
+                      <select class="custom-select rounded-0" name="category" id="exampleSelectRounded0" required>
+                        <option value="{{null}}" selected="selected" hidden="hidden" disabled>Select City</option>
                         <option>Premium</option>
                         <option>Standard</option>
                       </select>

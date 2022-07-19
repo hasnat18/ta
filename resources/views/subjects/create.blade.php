@@ -3,6 +3,7 @@
 @section('main')
 
 <section class="content">
+  {{-- @dd($lvls) --}}
     <div class="container-fluid">
       <div class="row">
         <!-- left column -->
@@ -23,21 +24,32 @@
           <!-- jquery validation -->
           <div class="card card-secondary">
             <div class="card-header">
-              <h3 class="card-title">Add Category</h3>
+              <h3 class="card-title">Add Subject</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form id="quickForm" action="{{route('category.store')}}" method="POST">
+            {{-- @dd($category); --}}
+            <form id="quickForm" action="{{route('subjects.store')}}" method="POST">
               @csrf
               <div class="card-body">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Category</label>
-                  <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Category Name" required>
+                  <label for="exampleInputEmail1">Level</label>
+                  <select name="level_id" class="form-control" >
+                    @foreach($lvls as $id => $lvl)
+                    @dd($lvl)
+                    <option  value="{{$lvl->$id}}">{{$lvl->level}}</option>
+                    {{-- <option {{ ($profiledata->nationality) == 'India' ? 'selected' : '' }}  value="India">India</option> --}}
+                    @endforeach
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Subject</label>
+                  <input type="text" name="subject" class="form-control" id="exampleInputEmail1" placeholder="Level Name">
                 </div>
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                <button type="submit" class="btn btn-secondary">Add</button>
+                <button type="submit" class="btn btn-warning text-white"><b>Add</b></button>
               </div>
             </form>
           </div>
