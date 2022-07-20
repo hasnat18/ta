@@ -18,9 +18,10 @@ class level extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function Subjects()
+
+    public function subjects()
     {
-        return $this->belongsTo(Subject::class);
+        return $this->HasMany(Subject::class);
     }
 
 }

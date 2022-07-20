@@ -206,6 +206,7 @@
           <li class="nav-item"><a href="{{route('classifieds.index')}}" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Classifieds{{-- <i class="right fas fa-angle-left"></i> --}}</p></a></li>
           <li class="nav-item"><a href="{{route('locations.index')}}" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Locations{{-- <i class="right fas fa-angle-left"></i> --}}</p></a></li>
           <li class="nav-item"><a href="{{route('subjects.index')}}" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Subjects{{-- <i class="right fas fa-angle-left"></i> --}}</p></a></li>
+          <li class="nav-item"><a href="{{route('modes.index')}}" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Tuition Modes{{-- <i class="right fas fa-angle-left"></i> --}}</p></a></li>
           
         </ul>
       </nav>

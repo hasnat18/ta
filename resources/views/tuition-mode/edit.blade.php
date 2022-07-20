@@ -3,7 +3,7 @@
 @section('main')
 
 <section class="content">
-  {{-- @dd($subj) --}}
+  {{-- @dd($mode) --}}
     <div class="container-fluid">
       <div class="row">
         <!-- left column -->
@@ -21,26 +21,21 @@
                   </ul>
               </div>
           @endif
+          <!-- jquery validation -->
           <div class="card card-secondary">
             <div class="card-header">
-              <h3 class="card-title">Add Subject</h3>
+              <h3 class="card-title">Edit Mode</h3>
             </div>
-            <form id="quickForm" action="{{route('subjects.update',$subj->id)}}" method="POST">
+            <!-- /.card-header -->
+            <!-- form start -->
+            {{-- @dd($category); --}}
+            <form id="quickForm" action="{{route('modes.update',$mode->id)}}" method="POST">
               @csrf
               @method('PATCH')
               <div class="card-body">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Level</label>
-                  <select name="level_id" class="form-control" required>
-                    @foreach($lvls as $id => $lvl)
-                      <option value="" selected="selected" hidden="hidden">choose here</option>
-                      <option  value="{{$lvl->id}}">{{$lvl->level}}</option>
-                    @endforeach
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Subject</label>
-                  <input type="text" value="{{$subj->subject}}" name="subject" class="form-control" id="exampleInputEmail1" placeholder="Level Name">
+                  <label for="exampleInputEmail1">Mode</label>
+                  <input type="text" value="{{$mode->mode}}" name="mode" class="form-control" id="exampleInputEmail1" placeholder="Type Mode" required>
                 </div>
               </div>
               <!-- /.card-body -->
@@ -49,9 +44,10 @@
               </div>
             </form>
           </div>
+          <!-- /.card -->
           </div>
       </div>
-
+      <!-- /.row -->
     </div><!-- /.container-fluid -->
   </section>
 

@@ -36,8 +36,8 @@
                   <label for="exampleInputEmail1">Level</label>
                   <select name="level_id" class="form-control" >
                     @foreach($lvls as $id => $lvl)
-                    @dd($lvl)
-                    <option  value="{{$lvl->$id}}">{{$lvl->level}}</option>
+                    {{-- @dd($lvl) --}}
+                    <option  value="{{$lvl->id}}">{{$lvl->level}}</option>
                     {{-- <option {{ ($profiledata->nationality) == 'India' ? 'selected' : '' }}  value="India">India</option> --}}
                     @endforeach
                   </select>

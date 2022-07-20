@@ -5,18 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Subject extends Model
+class Mode extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'level_id',
-        'data',
+        'mode',
+
     ];
-
-    public function level()
-    {
-        return $this->belongsTo(level::class);
-    }
-
-
 }

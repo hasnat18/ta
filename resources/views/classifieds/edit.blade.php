@@ -72,7 +72,7 @@
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Title</label>
-                      <input type="email" value="{{$data->title}}" name="title" class="form-control" id="exampleInputEmail1" placeholder="Title">
+                      <input type="text" value="{{$data->title}}" name="title" class="form-control" id="exampleInputEmail1" placeholder="Title">
                     </div>
                   </div>
                   <div class="col-lg-6">

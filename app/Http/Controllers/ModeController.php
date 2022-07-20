@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Level;
-use App\Models\Subject;
+use App\Models\Mode;
 use DB;
 
-class SubjectController extends Controller
+class ModeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,9 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        $subj = Subject::get()->all();
-       return view('subjects.index',compact('subj'));
+        $mode = Mode::get()->all();
+        // dd($mode);
+        return view('tuition-mode.index',compact('mode'));
     }
 
     /**
@@ -27,9 +27,7 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        $lvls = Level::get();
-        return view('subjects.create',compact('lvls'));
-
+        return view('tuition-mode.create');
     }
 
     /**
@@ -40,27 +38,26 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-
         try {
-
-            $data = $request->validate([
-                "level_id" => 'required',
-                "subject" => 'required',
+            $validated = $request->validate([
+                'mode' => 'required',
             ]);
-            // dd($data);
-            $data = new Subject;
-            $data->level_id = $request->input('level_id');
-            $data->subject = $request->input('subject');
-            $data->save();
-
-            return redirect()->route('subjects.index')
-                ->with('success','subjects created successfully');
+            // dd($validated);  
+            $mode = new Mode;
+        
+            $mode->mode = $request->input('mode');
+            $mode->save();
+            {
+                return redirect()->route('modes.index')
+                ->with('success','Mode Created successfully');
+            }
         }
         catch (\Exception $exception){
             return redirect()->back()
                 ->with('error',$exception->getMessage());
         }
+
+
     }
 
     /**
@@ -82,9 +79,8 @@ class SubjectController extends Controller
      */
     public function edit($id)
     {
-        $subj = Subject::find($id);
-        $lvls = Level::get();
-        return view('subjects.edit',compact('subj','lvls'));
+        $mode = Mode::find($id);
+       return view('tuition-mode.edit',compact('mode'));
     }
 
     /**
@@ -96,25 +92,23 @@ class SubjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request);
+        // dd($id);
         try {
-
-            $data = $request->validate([
-                "level_id" => 'required',
-                "subject" => 'required',
+            $validated = $request->validate([
+                'mode' => 'required',
             ]);
-            // dd($data);
-            $data = Subject::find($id);
-            $data->level_id = $request->input('level_id');
-            $data->subject = $request->input('subject');
-            $data->save();
-
-            return redirect()->route('subjects.index')
-                ->with('success','subjects Updated successfully');
+            // dd($validated);  
+            $mode = Mode::find($id);
+            $mode->mode = $request->input('mode');
+            $mode->save();
+            {
+                return redirect()->route('modes.index')
+                ->with('success','Mode Updated successfully');
+            }
         }
         catch (\Exception $exception){
             return redirect()->back()
-                ->with('error','Please select The Input Field');
+                ->with('error',$exception->getMessage());
         }
     }
 
@@ -127,9 +121,9 @@ class SubjectController extends Controller
     public function destroy($id)
     {
         try {
-            DB::table('subjects')->where('id',$id)->delete();
+            DB::table('modes')->where('id',$id)->delete();
             {
-                return redirect()->route('subjects.index')
+                return redirect()->route('modes.index')
                 ->with('success','Row Deleted Successfully');
             }
         }

@@ -71,7 +71,7 @@
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Title</label>
-                      <input type="email" name="title" class="form-control" id="exampleInputEmail1" placeholder="Title" required>
+                      <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="Title" required>
                     </div>
                   </div>
                   <div class="col-lg-6">

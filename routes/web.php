@@ -7,6 +7,7 @@ use App\Http\Controllers\cityController;
 use App\Http\Controllers\classifiedController;
 use App\Http\Controllers\LocationsController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\ModeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,8 @@ Route::resource('/classifieds', classifiedController::class);
 Route::resource('/locations', LocationsController::class);
 
 Route::resource('/subjects', SubjectController::class);
+
+Route::resource('/modes', ModeController::class);
 
 
 
