@@ -8,6 +8,7 @@ use App\Http\Controllers\classifiedController;
 use App\Http\Controllers\LocationsController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\ModeController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,8 @@ Route::resource('/locations', LocationsController::class);
 Route::resource('/subjects', SubjectController::class);
 
 Route::resource('/modes', ModeController::class);
+
+Route::resource('/students',StudentController::class);
 
 
 

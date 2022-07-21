@@ -8,6 +8,13 @@
           <link rel="stylesheet" href="{{url('public/assets/dist/css/adminlte.css')}}">
           <!-- Favicon -->
           <link rel="shortcut icon" type="image/x-icon" href="http://localhost/tution_academy-main/assets/images/favicon.png">
+          {{-- data table --}}
+                      <!-- /.card-header -->
+            <!-- form start -->
+            <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+            <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <!------ Include the above in your HEAD tag ---------->
       </head>
 
 
@@ -179,7 +186,7 @@
       </div>
 
       <!-- Sidebar Menu -->
-      <nav class="mt-2 position-auto">
+      <nav class="mt-2" height="auto">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
@@ -207,6 +214,7 @@
           <li class="nav-item"><a href="{{route('locations.index')}}" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Locations{{-- <i class="right fas fa-angle-left"></i> --}}</p></a></li>
           <li class="nav-item"><a href="{{route('subjects.index')}}" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Subjects{{-- <i class="right fas fa-angle-left"></i> --}}</p></a></li>
           <li class="nav-item"><a href="{{route('modes.index')}}" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Tuition Modes{{-- <i class="right fas fa-angle-left"></i> --}}</p></a></li>
+          <li class="nav-item"><a href="{{route('students.index')}}" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Students{{-- <i class="right fas fa-angle-left"></i> --}}</p></a></li>
           
         </ul>
       </nav>
@@ -215,8 +223,8 @@
     <!-- /.sidebar -->
   </aside>
 
-  <main class="container content-wrapper mt-5 mb-0 ">
-    <div >
+  <main>
+    <div class="content mt-5 mb-5 content-wrapper bg-white">
 
       @yield('main')
    
