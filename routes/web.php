@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\cityController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\LocationsController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\ModeController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\NoteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +53,16 @@ Route::resource('/modes', ModeController::class);
 
 Route::resource('/students',StudentController::class);
 
+Route::resource('/notes',NoteController::class);
+
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('home');
 
 
 
 
+
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

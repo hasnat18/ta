@@ -1,4 +1,5 @@
 @extends('layouts.sidebar')
+{{-- @dd($stu) --}}
 
 @section('main')
   <style>
@@ -126,21 +127,13 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="profile-img">
-                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
-                                        <div class="file btn btn-lg btn-primary">
-                                            Change Photo
-                                            <input type="file" name="file"/>
-                                        </div>
+                                        <img src="public/img/{{$stu->photo}}" alt=""/>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="profile-head">
-                                                <h5>
-                                                 {{$stu->name}}
-                                                </h5>
-                                                <h6>
-                                                  CNIC : {{$stu->cnic}}
-                                                </h6>
+                                                <h5>{{$stu->name}}</h5>
+                                                <h6>Email : {{$stu->email}}</h6>
                                                 <p class="proile-rating"><span>Status : {{$stu->status}}</span></p>
                                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                                             <li class="nav-item">
@@ -152,13 +145,15 @@
                                         </ul>
                                     </div>
                                 </div>
-                                {{-- <div class="col-md-2">
-                                    <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
-                                </div> --}}
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-4 pt-5">
                                     <div class="profile-work">
+                                        <div class="mb-3 ">
+                                            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        </div>
+                                        <button class="btn btn-primary"> Send </button>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
@@ -228,6 +223,14 @@
                                                       <p>{{$stu->city_id}}</p>
                                                   </div>
                                               </div>
+                                              <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>CNIC</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>CNIC : {{$stu->cnic}}</p>
+                                                </div>
+                                            </div>
                                         </div>
                                         {{-- <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                                     <div class="row">
@@ -277,16 +280,28 @@
                                                 </div>
                                             </div>
                                         </div> --}}
+                                        
                                     </div>
                                 </div>
                             </div>
                         </form>           
                     </div>
-          </div>
+
+
+                    <div class="row">
+                        <div class="col-md-4">
+
+                        </div>
+                        <div class="col-md-8">
+
+                        </div>
+                    </div>
+
+                    
+                </div>
           </div>
       </div>
-      <!-- /.row -->
-    </div><!-- /.container-fluid -->
+    </div>
   </section>
 
 @endsection

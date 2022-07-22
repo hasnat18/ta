@@ -1,5 +1,3 @@
-{{-- @dd($stu) --}}
-
 @extends('layouts.sidebar')
 
 @section('main')
@@ -24,11 +22,11 @@
                               @endif
                               <div class="card">
                                 <div class="card-header">
-                                  <h3 class="card-title">All Student</h3>
+                                  <h3 class="card-title">All Level</h3>
                   
                                   <div class="card-tools">
                                     <div class="input-group input-group-sm" style="width: 150px;">
-                                        {{-- <a href="{{route('levels.create')}}" class="btn btn-sm rounded btn-secondary">Add New</a> --}}
+                                        <a href="{{route('levels.create')}}" class="btn btn-sm rounded btn-secondary">Add New</a>
                   
                                       {{-- <div class="input-group-append">
                                         <button type="submit" class="btn btn-default">
@@ -40,33 +38,32 @@
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body table-responsive p-0">
-                                  <table class="table table-hover  table-bordered">
+                                  <table class="table table-hover text-nowrap">
                                     <thead>
                                       <tr>
-                                        <th>Id</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Registered Time</th>
+                                        <th>no</th>
+                                        <th>Category</th>
+                                        <th>Level</th>
                                         <th>Action</th>
                                       </tr>
                                     </thead>
                                     <tbody>
-                                      @foreach($stu as $d)
+                                      {{-- @foreach($level as $d) --}}
                                         <tr>
-                                            <td>{{$d->id}}</td>
-                                            <td>{{$d->name}}</td>
-                                            <td>{{$d->email}}</td>
-                                            <td>{{$d->created_at}}</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
                                             <td>
                                               <form action="" method="POST">
                                                 {{-- <a href="" style="color:white;" >Delete</a> --}}
                                                 @csrf
                                                 @method('DELETE')
-                                                <a href="{{route('students.show',$d->id)}}" class="btn btn-sm rounded btn-secondary">Edit</a>
+                                                <a href="" class="btn btn-sm rounded btn-secondary">Edit</a>
+                                                <button class="btn btn-sm rounded btn-danger">Delete</button>
                                             </form>
                                             </td>
                                           </tr>
-                                        @endforeach
+                                        {{-- @endforeach --}}
                                     </tbody>
                                   </table>
                                 </div>

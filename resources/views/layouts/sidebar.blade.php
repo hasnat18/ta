@@ -8,13 +8,14 @@
           <link rel="stylesheet" href="{{url('public/assets/dist/css/adminlte.css')}}">
           <!-- Favicon -->
           <link rel="shortcut icon" type="image/x-icon" href="http://localhost/tution_academy-main/assets/images/favicon.png">
-          {{-- data table --}}
-                      <!-- /.card-header -->
-            <!-- form start -->
-            <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-            <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-            <!------ Include the above in your HEAD tag ---------->
+          {{-- Multi select --}}
+          <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+          <link rel="stylesheet" href="{{url('public/assets/plugins/multi-select-plugins/bootstrap.min.css')}}" type="text/css"/>
+          <script type="text/javascript" src="{{url('public/assets/plugins/multi-select-plugins/jquery.min.js')}}"></script>
+          <script type="text/javascript" src="{{url('public/assets/plugins/multi-select-plugins/bootstrap.min.js')}}"></script>
+          <!-- Include the plugin's CSS and JS: -->
+          <script type="text/javascript" src="{{url('public/assets/plugins/multi-select-plugins/bootstrap-multiselect.js')}}"></script>
+          <link rel="stylesheet" href="{{url('public/assets/plugins/multi-select-plugins/bootstrap-multiselect.css')}}" type="text/css"/>
       </head>
 
 
@@ -207,6 +208,7 @@
               </li>
             </ul>
           </li> --}}
+          <li class="nav-item"><a href="{{route('home')}}" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Admin Dashboard<i class="right fas fa-angle-left"></i></p></a></li>
           <li class="nav-item"><a href="{{route('category.index')}}" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Categories{{-- <i class="right fas fa-angle-left"></i> --}}</p></a></li>
           <li class="nav-item"><a href="{{route('levels.index')}}" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Levels{{-- <i class="right fas fa-angle-left"></i> --}}</p></a></li>
           <li class="nav-item"><a href="{{route('cities.index')}}" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Cities{{-- <i class="right fas fa-angle-left"></i> --}}</p></a></li>
@@ -215,6 +217,7 @@
           <li class="nav-item"><a href="{{route('subjects.index')}}" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Subjects{{-- <i class="right fas fa-angle-left"></i> --}}</p></a></li>
           <li class="nav-item"><a href="{{route('modes.index')}}" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Tuition Modes{{-- <i class="right fas fa-angle-left"></i> --}}</p></a></li>
           <li class="nav-item"><a href="{{route('students.index')}}" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Students{{-- <i class="right fas fa-angle-left"></i> --}}</p></a></li>
+          <li class="nav-item"><a href="{{route('notes.index')}}" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Notes{{-- <i class="right fas fa-angle-left"></i> --}}</p></a></li>
           
         </ul>
       </nav>
@@ -248,3 +251,17 @@
 <script src="{{ url ('public/assets/dist/js/adminlte.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ url ('public/assets/dist/js/demo.js')}}"></script>
+{{-- Multi select --}}
+<script>
+  $(document).ready(function(){
+    
+    var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
+       removeItemButton: true,
+      //  maxItemCount:5,
+       searchResultLimit:5,
+      //  renderChoiceLimit:5
+     }); 
+    
+    
+});
+</script>
