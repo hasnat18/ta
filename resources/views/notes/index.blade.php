@@ -26,7 +26,7 @@
                   
                                   <div class="card-tools">
                                     <div class="input-group input-group-sm" style="width: 150px;">
-                                        <a href="{{route('levels.create')}}" class="btn btn-sm rounded btn-secondary">Add New</a>
+                                        <a href="{{route('notes.create')}}" class="btn btn-sm rounded btn-secondary">Add New</a>
                   
                                       {{-- <div class="input-group-append">
                                         <button type="submit" class="btn btn-default">

@@ -8,16 +8,17 @@
           <link rel="stylesheet" href="{{url('public/assets/dist/css/adminlte.css')}}">
           <!-- Favicon -->
           <link rel="shortcut icon" type="image/x-icon" href="http://localhost/tution_academy-main/assets/images/favicon.png">
+          {{-- main js  --}}
+          <script src="{{ url('public/assets/js/main.js') }}"></script> 
           {{-- Multi select --}}
           <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
           <link rel="stylesheet" href="{{url('public/assets/plugins/multi-select-plugins/bootstrap.min.css')}}" type="text/css"/>
           <script type="text/javascript" src="{{url('public/assets/plugins/multi-select-plugins/jquery.min.js')}}"></script>
           <script type="text/javascript" src="{{url('public/assets/plugins/multi-select-plugins/bootstrap.min.js')}}"></script>
-          <!-- Include the plugin's CSS and JS: -->
-          <script type="text/javascript" src="{{url('public/assets/plugins/multi-select-plugins/bootstrap-multiselect.js')}}"></script>
-          <link rel="stylesheet" href="{{url('public/assets/plugins/multi-select-plugins/bootstrap-multiselect.css')}}" type="text/css"/>
+           {{-- Include the plugin's CSS and JS:  --}}
+          <script type="text/javascript" src="{{url('public/assets/plugins/multi-select-plugins/select-multiple-selectdemo/js/mobiscroll.javascript.min.js')}}"></script>
+          <link rel="stylesheet" href="{{url('public/assets/plugins/multi-select-plugins/select-multiple-selectdemo/css/mobiscroll.javascript.min.css')}}" type="text/css"/>
       </head>
-
 
       {{-- topnav --}}
       <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -148,11 +149,67 @@
               <i class="fas fa-expand-arrows-alt"></i>
             </a>
           </li>
-          <li class="nav-item">
+
+          <ul class="navbar-nav ms-auto">
+            <!-- Authentication Links -->
+            @guest
+                @if (Route::has('login'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    </li>
+                @endif
+
+                @if (Route::has('register'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    </li>
+                @endif
+            @else
+                <li class="nav-item dropdown">
+                  <a class="text-secondary mt-1 mx-3 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ Auth::user()->name }}
+                  </a>
+
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+            @endguest
+        </ul>
+{{-- 
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ Auth::user()->name }}
+          </button>
+          <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+            {{ Auth::user()->name }}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                          document.getElementById('logout-form').submit();">
+             {{ __('Logout') }}
+         </a>
+
+         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+             @csrf
+         </form>
+          </div>
+        </div> --}}
+
+          {{-- <li class="nav-item">
             <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
               <i class="fas fa-th-large"></i>
             </a>
-          </li>
+          </li> --}}
         </ul>
       </nav>
       

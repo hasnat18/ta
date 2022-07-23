@@ -21,12 +21,12 @@
                                   </div>
                               @endif
                               <div class="card">
-                                <div class="card-header">
+                                <div class="card-header bg-secondary">
                                   <h3 class="card-title">All Level</h3>
                   
                                   <div class="card-tools">
-                                    <div class="input-group input-group-sm" style="width: 150px;">
-                                        <a href="{{route('modes.create')}}" class="btn btn-sm rounded btn-secondary">Add New</a>
+                                    <div class="input-group input-group-sm pt-2" style="width: 150px;">
+                                        <a href="{{route('modes.create')}}" class="btn btn-sm rounded btn-light text-secondary "> <strong>Add New</strong></a>
                   
                                       {{-- <div class="input-group-append">
                                         <button type="submit" class="btn btn-default">

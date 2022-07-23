@@ -21,48 +21,102 @@
                   </ul>
               </div>
           @endif
-          <!-- jquery validation -->
           <div class="card card-secondary">
             <div class="card-header">
-              <h3 class="card-title">Add Levels</h3>
+              <h3 class="card-title">Add Note</h3>
             </div>
-            <!-- /.card-header -->
-            <!-- form start -->
-            {{-- @dd($category); --}}
             <form id="quickForm" action="{{route('levels.store')}}" method="POST">
               @csrf
               <div class="card-body">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Category</label>
-                  <select name="category_id" class="form-control" >
-                    @foreach($categories as $id => $category)
-                    <option  value="{{$id}}">{{$category}}</option>
+                  <label for="exampleInputEmail1">User Type</label>
+                  <select id="type" name="type" class="form-control" require>
+                    <option value="" selected="selected" hidden="hidden">Select Type</option>
+                    <option value="teacher">Teacher</option>
+                    <option value="student">Student</option>
                     {{-- <option {{ ($profiledata->nationality) == 'India' ? 'selected' : '' }}  value="India">India</option> --}}
-                    @endforeach
                   </select>
                 </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Levels</label>
-                  <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Level Name">
+
+                <div id="teacher" class="mx-0">
+                  <div class="form-group">
+                  <input type="text" name="guard" value="teacher" hidden>
+                    <label>Multi-select
+                      <input mbsc-input id="my-input" data-dropdown="true" data-tags="true" />
+                    </label>
+                    <select name="user_id" id="multiple-select" class="form-control" multiple>
+                        <option value="1">Books</option>
+                        <option value="2">Books</option>
+                        <option value="3">Books</option>
+                        <option value="4">Books</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="exampleFormControlTextarea1" class="form-label">Type Note</label>
+                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  </div>
+                  <button class="btn btn-secondary" type="submit"> Send </button>\
+                  <script>
+                      mobiscroll.select('#multiple-select', {
+                          inputElement: document.getElementById('my-input'),
+                          touchUi: false
+                      });
+                  </script>
                 </div>
-              </div>
-              <!-- /.card-body -->
-              <div class="card-footer">
-                <button type="submit" class="btn btn-warning text-white"><b>Add</b></button>
+
+                <div id="student" class="mx-0">
+                  <div class="form-group">
+                  <input type="text" name="guard" value="teacher" hidden>
+                    <label>Multi-select
+                      <input mbsc-input id="my-input" data-dropdown="true" data-tags="true" />
+                    </label>
+                    <select name="user_id" id="multiple-select" class="form-control" multiple>
+                        <option value="1">Books</option>
+                        <option value="2">Books</option>
+                        <option value="3">Books</option>
+                        <option value="4">Books</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="exampleFormControlTextarea1" class="form-label">Type Note</label>
+                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  </div>
+                  <button class="btn btn-secondary" type="submit"> Send </button>\
+                  <script>
+                      mobiscroll.select('#multiple-select', {
+                          inputElement: document.getElementById('my-input'),
+                          touchUi: false
+                      });
+                  </script>
+                </div>
               </div>
             </form>
           </div>
-          <!-- /.card -->
-          </div>
-        <!--/.col (left) -->
-        <!-- right column -->
-        <div class="col-md-6">
-
         </div>
-        <!--/.col (right) -->
       </div>
-      <!-- /.row -->
-    </div><!-- /.container-fluid -->
+    </div>
+
+    <script>
+      $('#teacher').hide();
+      $('#student').hide();
+
+      $('#type').change(() => {
+          var selected = $( "#type option:selected" ).val();
+          if(selected == 'teacher')
+          {
+              $('#teacher').show();
+              $('#student').hide();
+          }
+          else if (selected == 'student')
+          {
+              $('#teacher').hide();
+              $('#student').show();
+          }
+      });
+    </script>
+
+
+
   </section>
 
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Student;
 
 class NoteController extends Controller
 {
@@ -23,7 +24,8 @@ class NoteController extends Controller
      */
     public function create()
     {
-        //
+        $stu = Student::get()->all();
+        return view('notes.create',compact('stu'));
     }
 
     /**
@@ -34,7 +36,7 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       dd($request);
     }
 
     /**
